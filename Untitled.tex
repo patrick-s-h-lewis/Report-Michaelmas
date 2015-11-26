@@ -24,7 +24,7 @@ With the widespread adoption of the internet in the late 1990's and 2000's, ther
 
 Simultaneously, University Department websites began to post records of their recent publications for adverting and informational purposes, usually with hyperlinks to where the article could be fully accessed.
 
-Publishers still protect journal article content and metadata, in some cases, aggressively, in order to look after their intellectual property. The data they hold on article publishing is immensively valuable, and as such, publishers are not willing to give access to their massive metadata holdings. There is a well known saying in Data Science from Tim O'Reilly, ``The Guy with The Most Data Wins" \textsuperscript{1}. As such, it is unlikely that academic publishing companies will release their data for analysis by the public.
+Publishers still protect journal article content and metadata, in some cases, aggressively, in order to look after their intellectual property. The data they hold on article publishing is immensively valuable, and as such, publishers are not willing to give access to their massive metadata holdings. There is a well known saying in Data Science from Tim O'Reilly, ``The Guy with The Most Data Wins" \cite{HEWHOHASDATA}. As such, it is unlikely that academic publishing companies will release their data for analysis by the public.
 \subsection{Motivation}
 The publishing data, when collected and analysed using machine learning and big data techniques, can yield valuable insights into the direction of shifting academic focus, where world leading research is being carried out, and offers the possibility of procedural categorisation of research. The possibilities do not end there, and large datasets are almost infinitely mine-able for interesting insights. For an academic institution like the University of Cambridge, there are two main motivations for mining the data of the publishing landscape:
 \begin{itemize}
@@ -103,6 +103,18 @@ BATHSIM and CAMSIM projects use all of the above technologies with an architectu
 The main problem encountered so far is how to scrape large numbers of websites for records without writing individual time consuming scraping scripts and finding Xpaths for every website visited, as was used in CAMSIM and BATHSIM. The possible solution is using `regular expressions' pattern matching techniques on DOIs. DOIs are explained in detail in section \ref{sec:DOI}. The proposed collection strategy, which is 90\% complete, is then described in section \ref{sec:CHERRY}.
 \subsection{DOI}
 \label{sec:DOI}
+DOIs (document object identifiers) are identifier strings used access journal articles. DOIs can issued by a number of accredited issuing bodies, although the vast majority of scientific articles are issued by CrossRef, a not-for-profit body comprised from Publishers International Linking Association (PILA), a loose association of many academic publishers \cite{CROSSREF}. A DOI is usually included in a citation or record, and by pre-pending a DOI string with the url stub ``http://dx.doi.org/", DOI.org will redirect the request to the desired academic journal entry on the publishers website. All articles published by large established publishers will have a DOI registered against them.
+
+DOIs have a somewhat loose structure, and the anatomy of a DOI is shown in figure \ref{fig:DOI}.
+
+\begin{figure}[H]
+    \centering
+    \textbf{Anatomy of a DOI}\par\medskip
+    \includegraphics[scale=0.15]{DOI2.png}
+    \caption{Doi structure. The structure consists of a numeric prefix (X and Y must be integers) and alphanumeric suffix (Z can be any UTF-8 encoded Character) \label{fig:DOI}}
+\end{figure}
+DOIs consist of 2 sections, the prefix and suffix. The Prefix is subdivided into a Directory indicator (always integer `10') separated from a registrant code assigned by the issuing body. REgistrant codes are numeric and can be of any length, however they are almost invariably 4 integers long. Registrant codes can have further subdivisions seperated by full stops. 
+
 \subsection{Cherry Data Collection Program}
 \label{sec:CHERRY}
 
@@ -113,7 +125,12 @@ The main problem encountered so far is how to scrape large numbers of websites f
 \subsection{Data processing}
 \section{Next Steps}
 \section{Bibliography}
-[1] O'Reilly (2012) \emph{Tim O'Reilly interviewed by Forbes Editor Jon Bruner} Available at: https://www.youtube.com/watch?v=wNLhFi3XhIE (accessed 24 November 2015)
+\begin{thebibliography}{9}
+\bibitem{HEWHOHASDATA} O'Reilly (2012) \emph{Tim O'Reilly interviewed by Forbes Editor Jon Bruner} Available at: https://www.youtube.com/watch?v=wNLhFi3XhIE (accessed 24 November 2015)
+\bibitem{CROSSREF}
+\emph{The Formation of CrossRef: A Short History} (2009) Available at: http://www.crossref.org/08downloads/CrossRef10Years.pdf
+accessed 25 November 2015)
 
+\end{thebibliography}
 
 \end{document}  
